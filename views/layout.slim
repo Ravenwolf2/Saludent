@@ -1,0 +1,15 @@
+doctype html
+html lang="en"
+	head
+		title Titulo
+		meta charset="utf-8"
+		link href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" media="screen, projection" rel="stylesheet"
+		script src="/javascripts/application.js"
+	body
+		header
+			h1 Songs By Sinatra
+			== slim :nav
+		section
+			== yield
+		footer
+		p foot
