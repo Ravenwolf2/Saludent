@@ -19,14 +19,12 @@ end
 
 require './models/paciente.rb'	#va despues de la conexion a la base de datos porque lo necesita
 
-#Paciente.unrestrict_primary_key
-
 get '/' do
 	slim :principal
 end
 
 get '/pacientes' do
-	slim :pacientes #Paciente.all.to_s
+	slim :pacientes
 end
 
 get '/pacientes/nuevo' do
@@ -45,8 +43,4 @@ end
 get '/pacientes/borrar/:dni' do
 	Paciente[params[:dni]].delete
 	redirect to('/pacientes')
-end
-
-get '/prueba' do
-	Paciente[32115998].values.to_s
 end

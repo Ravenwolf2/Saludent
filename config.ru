@@ -2,6 +2,6 @@ require 'rubygems'
 require 'bundler/setup'
 require 'sinatra'
 
-require './main'
+require './principal'
 
 run Sinatra::Application
