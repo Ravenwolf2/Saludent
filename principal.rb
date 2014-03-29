@@ -28,15 +28,28 @@ get '/pacientes' do
 end
 
 get '/pacientes/nuevo' do
-	slim :paciente_nuevo
+	slim :alta_paciente
 end
 
 post '/pacientes/nuevo' do
-	paciente = Paciente.create(
+	Paciente.create(
 		:dni => params[:dni],
 		:nombre => params[:nombre],
 		:apellido => params[:apellido]
 	)
+	redirect to('/pacientes')
+end
+
+get '/pacientes/modificar/:dni' do
+	@paciente = Paciente[params[:dni]]
+	slim :modificar_paciente
+end
+
+put '/pacientes/modificar/:dni' do
+	Paciente[params[:dni]].update(
+		:nombre => params[:nombre],
+		:apellido => params[:apellido]
+		)
 	redirect to('/pacientes')
 end
 

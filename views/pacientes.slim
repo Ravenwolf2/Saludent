@@ -3,6 +3,6 @@ a href="/pacientes/nuevo" Ingresar nuevo paciente
 - if not Paciente.empty?
 	ul
 		-Paciente.each do |paciente|
-			li #{paciente.apellido}, #{paciente.nombre}, #{paciente.dni} <a href="/pacientes/borrar/#{paciente.dni}">borrar</a>
+			li #{paciente.apellido}, #{paciente.nombre}, #{paciente.dni} <a href="/pacientes/borrar/#{paciente.dni}">borrar</a> <a href="/pacientes/modificar/#{paciente.dni}">modificar</a>
 - else
 	p No hay pacientes!
