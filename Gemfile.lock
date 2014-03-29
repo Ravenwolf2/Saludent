@@ -3,7 +3,6 @@ GEM
   specs:
     backports (3.6.0)
     multi_json (1.9.2)
-    pg (0.17.1)
     rack (1.5.2)
     rack-protection (1.5.2)
       rack
@@ -32,7 +31,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  pg
   sequel
   sinatra
   sinatra-contrib
