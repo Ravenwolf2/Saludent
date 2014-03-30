@@ -1,15 +1,24 @@
 doctype html
 html lang="en"
 	head
-		title Saludent
 		meta charset="utf-8"
-		/!link href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" media="screen, projection" rel="stylesheet"
-		/!script src="/javascripts/application.js"
+		meta name="viewport" content="width=device-width, initial-scale=1.0"
+		title Saludent
+		link rel="stylesheet" type="text/css" href="/css/bootstrap.css"
+		link rel="stylesheet" type="text/css" href="/css/layout.css"
+		/!deberia mejorar esto:
+		style table{width: 100%;}
 	body
-		header
-			h1 Saludent
+		nav.navbar-wrapper.navbar-default.navbar-fixed-top role="navigation"
 			== slim :nav
-		section
-			== yield
-		footer
-		p footer
+		/!header
+		/!	h3 Saludent
+		section.container style="margin-top: 40px;"
+			div.row
+				div.col-md-12
+					== yield
+		footer.container
+			div.row
+				p footer
+		script src="http://code.jquery.com/jquery.min.js"
+		script src="/js/bootstrap.min.js"

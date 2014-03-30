@@ -1,8 +1,16 @@
-nav
-	ul
-		li
-			a href="/" title="Principal" Principal
-		li 
-			a href="/pacientes" title="Pacientes" Pacientes
-		/!li 
-			/!a href="/pacientes/nuevo" title="Nuevo Paciente" Nuevo paciente
+div.container
+	div.navbar-header.navbar-brand Saludent
+	div
+   	ul.nav.navbar-nav
+   		li
+   			a href="/" title="Principal"
+   				span.glyphicon.glyphicon-home  Principal
+   		li.dropdown
+				a.dropdown-toggle href="#" data-toggle="dropdown"
+					span.glyphicon.glyphicon-user  Pacientes
+					b.caret
+					ul.dropdown-menu
+						li
+							a href="/pacientes" Listado
+						li
+							a href="/pacientes/nuevo" Agregar

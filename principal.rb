@@ -57,3 +57,7 @@ get '/pacientes/borrar/:dni' do
 	Paciente[params[:dni]].delete
 	redirect to('/pacientes')
 end
+
+get '/prueba' do
+	slim :prueba
+end
