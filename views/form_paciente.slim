@@ -1,0 +1,13 @@
+div.form-group
+	label for="nombre" Nombre:
+	input#nombre.form-control type="text" name="paciente[nombre]" value="#{@paciente.nombre}" style="width: 205px;"
+div.form-group
+	label for="apellido" Apellido:
+	input#apellido.form-control type="text" name="paciente[apellido]" value="#{@paciente.apellido}" style="width: 205px;"
+div.form-group
+	label for="dni" DNI:
+	- if @tipo == :alta
+		input#dni.form-control type="text" name="paciente[dni]" value="#{@paciente.dni}" style="width: 205px;"
+	- else 
+		input#dni.form-control type="text" name="paciente[dni]" value="#{@paciente.dni}" style="width: 205px;" disabled=true
+button.btn.btn-default type="submit" Aceptar

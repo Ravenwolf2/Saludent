@@ -19,6 +19,26 @@ end
 
 require './models/paciente.rb'	#va despues de la conexion a la base de datos porque lo necesita
 
+helpers do
+	def crear_paciente
+		@paciente = Paciente.create(params[:paciente])
+	end
+
+	def buscar_paciente
+		@paciente = Paciente[params[:dni]]
+	end
+
+	def modificar_paciente
+		buscar_paciente
+		@paciente.update(params[:paciente])
+	end
+
+	def borrar_paciente
+		buscar_paciente
+		@paciente.delete
+	end
+end
+
 get '/' do
 	slim :principal
 end
@@ -28,36 +48,31 @@ get '/pacientes' do
 end
 
 get '/pacientes/nuevo' do
+	@paciente = Paciente.new	#hago esto porque en el form_paciente accedo a @paciente.nombre y si no existe @paciente
+	@tipo = :alta 						#da NoMethodError, es solo una variable dummy para que no salte el error
 	slim :alta_paciente
 end
 
 post '/pacientes/nuevo' do
-	Paciente.create(
-		:dni => params[:dni],
-		:nombre => params[:nombre],
-		:apellido => params[:apellido]
-	)
+	crear_paciente
 	redirect to('/pacientes')
 end
 
 get '/pacientes/modificar/:dni' do
-	@paciente = Paciente[params[:dni]]
+	buscar_paciente
+	@tipo = :modificar
 	slim :modificar_paciente
 end
 
 put '/pacientes/modificar/:dni' do
-	Paciente[params[:dni]].update(
-		:nombre => params[:nombre],
-		:apellido => params[:apellido]
-		)
+	modificar_paciente
 	redirect to('/pacientes')
 end
 
 get '/pacientes/borrar/:dni' do
-	Paciente[params[:dni]].delete
+	borrar_paciente
 	redirect to('/pacientes')
 end
 
-get '/prueba' do
-	slim :prueba
+get '/pedido_primera_consulta' do
 end

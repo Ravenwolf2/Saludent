@@ -7,10 +7,20 @@ div.container
    				span.glyphicon.glyphicon-home  Principal
    		li.dropdown
 				a.dropdown-toggle href="#" data-toggle="dropdown"
+					span.glyphicon.glyphicon-time  Turnos
+					b.caret
+				ul.dropdown-menu
+					li
+						a href="/pedido_primera_consulta"
+							span.glyphicon.glyphicon-asterisk  Pedido Primera Consulta
+   		li.dropdown
+				a.dropdown-toggle href="#" data-toggle="dropdown"
 					span.glyphicon.glyphicon-user  Pacientes
 					b.caret
-					ul.dropdown-menu
-						li
-							a href="/pacientes" Listado
-						li
-							a href="/pacientes/nuevo" Agregar
+				ul.dropdown-menu
+					li
+						a href="/pacientes"
+							span.glyphicon.glyphicon-list  Listado
+					li
+						a href="/pacientes/nuevo"
+							span.glyphicon.glyphicon-plus  Agregar
