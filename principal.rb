@@ -10,11 +10,12 @@ require 'sequel'
 #require 'coffee-script'
 
 configure :development do
+	#@DB = Sequel.postgres('Saludent', :host=>'localhost', :user=>'postgres', :password=>'psql')
 	@DB = Sequel.sqlite('db/sqlite/Saludent.sqlite')
 end
 
 configure :production do
-	Sequel.connect(ENV.fetch['DATABASE_URL'])
+	@DB = Sequel.connect(ENV['DATABASE_URL'])
 end
 
 #va despues de la conexion a la base de datos porque la necesita
