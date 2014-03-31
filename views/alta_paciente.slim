@@ -1,3 +1,6 @@
-h3 Ingrese nuevo paciente!
-form role="form" action="/pacientes/nuevo" method="POST" 
-	== slim :form_paciente
+div.row
+	div.col-md-12
+		h3 Ingrese nuevo paciente:
+		form role="form" action="/pacientes/nuevo" method="POST"
+			- @tipo = :alta
+			== slim :form_paciente

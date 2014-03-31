@@ -10,14 +10,15 @@ require 'sequel'
 #require 'coffee-script'
 
 configure :development do
-	@DB = Sequel.sqlite('db/Saludent.sqlite')
+	@DB = Sequel.sqlite('db/sqlite/Saludent.sqlite')
 end
 
-# configure :production do
-# 	Sequel.postgres('development', :host=>'localhost', :user=>'user', :password=>'password')
-# end
+configure :production do
+	Sequel.connect(ENV.fetch['DATABASE_URL'])
+end
 
-require './models/paciente.rb'	#va despues de la conexion a la base de datos porque lo necesita
+#va despues de la conexion a la base de datos porque la necesita
+require './models/paciente.rb'
 
 helpers do
 	def crear_paciente
@@ -25,7 +26,7 @@ helpers do
 	end
 
 	def buscar_paciente
-		@paciente = Paciente[params[:dni]]
+		@paciente = Paciente[:dni => params[:dni]]
 	end
 
 	def modificar_paciente
@@ -36,6 +37,12 @@ helpers do
 	def borrar_paciente
 		buscar_paciente
 		@paciente.delete
+	end
+
+	def dummy_paciente
+		#Variable dummy
+		#En :form_paciente/@paciente.nombre, si no existe @paciente da NoMethodError
+		@paciente = Paciente.new
 	end
 end
 
@@ -48,8 +55,7 @@ get '/pacientes' do
 end
 
 get '/pacientes/nuevo' do
-	@paciente = Paciente.new	#hago esto porque en el form_paciente accedo a @paciente.nombre y si no existe @paciente
-	@tipo = :alta 						#da NoMethodError, es solo una variable dummy para que no salte el error
+	dummy_paciente
 	slim :alta_paciente
 end
 
@@ -60,7 +66,6 @@ end
 
 get '/pacientes/modificar/:dni' do
 	buscar_paciente
-	@tipo = :modificar
 	slim :modificar_paciente
 end
 
@@ -75,4 +80,6 @@ get '/pacientes/borrar/:dni' do
 end
 
 get '/pedido_primera_consulta' do
+	dummy_paciente
+	slim :pedido_primera_consulta
 end

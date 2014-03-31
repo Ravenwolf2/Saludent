@@ -1,4 +1,7 @@
-h3 Modifique al paciente!
-form role="form" action="/pacientes/modificar/#{@paciente.dni}" method="POST"
-	input type="hidden" name="_method" value="PUT"
-	== slim :form_paciente
+div.row
+	div.col-md-12
+		h3 Modifique al paciente!
+		form role="form" action="/pacientes/modificar/#{@paciente.dni}" method="POST"
+			input type="hidden" name="_method" value="PUT"
+			- @tipo = :modificar
+			== slim :form_paciente

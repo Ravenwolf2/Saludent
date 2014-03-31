@@ -1,22 +1,24 @@
-h2 Pacientes
-- if not Paciente.empty?
-	table.table-striped.table-hover
-		thead
-			tr
-				th Apellido
-				th Nombre
-				th DNI
-		tbody
-			tr
-			-Paciente.each do |paciente|
-				tr
-					td #{paciente.apellido}
-					td #{paciente.nombre}
-					td #{paciente.dni}
-					td 
-						a.btn.btn-default.btn-xs role="button" href="/pacientes/modificar/#{paciente.dni}"
-							span.glyphicon.glyphicon-pencil  Editar  
-						a.btn.btn-default.btn-xs role="button" href="/pacientes/borrar/#{paciente.dni}"
-							span.glyphicon.glyphicon-remove  Borrar  
-- else
-	p No hay pacientes!
+div.row
+	div.col-md-12
+		h2 Pacientes
+		- if not Paciente.empty?
+			table.table-striped.table-hover
+				thead
+					tr
+						th Apellido
+						th Nombre
+						th DNI
+				tbody
+					tr
+					-Paciente.each do |paciente|
+						tr
+							td #{paciente.apellido}
+							td #{paciente.nombre}
+							td #{paciente.dni}
+							td 
+								a.btn.btn-default.btn-xs role="button" href="/pacientes/modificar/#{paciente.dni}"
+									span.glyphicon.glyphicon-pencil  Editar  
+								a.btn.btn-default.btn-xs role="button" href="/pacientes/borrar/#{paciente.dni}"
+									span.glyphicon.glyphicon-remove  Borrar  
+		- else
+			p No hay pacientes!

@@ -1,0 +1,14 @@
+div.row
+	div.col-md-12
+		h2 Solicitud de primera consulta
+div.row
+	div.col-md-6
+		h4 Ingresar nuevo paciente:
+		form role="form" action="/pacientes/nuevo" method="POST"
+			- @tipo = :alta
+			== slim :form_paciente
+	div.col-md-6
+		h4 Ingresar nuevo turno:
+		form role="form" action="/pacientes/nuevo" method="POST"
+			- @tipo = :alta
+			== slim :form_paciente
