@@ -4,7 +4,7 @@ namespace :db do
     require 'sequel'
     Sequel.extension :migration
     #DB = Sequel.postgres('Saludent', :host=>'localhost', :user=>'postgres', :password=>'psql')
-    DB = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://db/sqlite/Saludent.sqlite')
+    DB = Sequel.connect(ENV['DATABASE_URL']) # || 'sqlite://db/sqlite/Saludent.sqlite')
     if args[:version]
       puts "Migrating to version #{args[:version]}"
       Sequel::Migrator.run(DB, "db/migrations", target: args[:version].to_i)
